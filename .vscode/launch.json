@@ -1,0 +1,181 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Build & Debug CM7",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "executable": "${workspaceFolder}/build/debug/CM7/CM7.elf",
+            // Let CMake extension decide executable: "${command:cmake.launchTargetPath}"
+            // Or fixed file path: "${workspaceFolder}/path/to/filename.elf"
+            "loadFiles": [
+                "${workspaceFolder}/build/debug/CM7/CM7.elf",
+                "${workspaceFolder}/build/debug/CM4/CM4.elf",
+            ],
+            "request": "launch",
+            "servertype": "stlink",
+            "device": "STM32H745ZITx", //MCU used
+            "interface": "swd",
+            "serialNumber": "",        //Set ST-Link ID if you use multiple at the same time
+            "runToEntryPoint": "main",
+            "svdFile": "${config:STM32VSCodeExtension.cubeCLT.path}/STMicroelectronics_CMSIS_SVD/STM32H745_CM7.svd",
+            "v1": false,               //Change it depending on ST Link version
+            "serverpath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",
+            "stm32cubeprogrammer":"${config:STM32VSCodeExtension.cubeCLT.path}/STM32CubeProgrammer/bin",
+            "stlinkPath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",   
+            "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
+            "gdbPath":"gdb-multiarch",            
+            "serverArgs": [
+                "-l", "1",
+                "-m", "0",
+                "-k",
+                "-t","-s"
+            ],
+            "preLaunchTask": "Build project"
+            /* If you use external loader, add additional arguments */
+            //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],
+        },
+        {
+            "name": "Attach CM7",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "executable": "${workspaceFolder}/build/debug/CM7/CM7.elf",
+            // Let CMake extension decide executable: "${command:cmake.launchTargetPath}"
+            // Or fixed file path: "${workspaceFolder}/path/to/filename.elf"
+            "request": "attach",
+            "servertype": "stlink",
+            "device": "STM32H745ZITx", //MCU used
+            "interface": "swd",
+            "serialNumber": "",        //Set ST-Link ID if you use multiple at the same time
+            "svdFile": "${config:STM32VSCodeExtension.cubeCLT.path}/STMicroelectronics_CMSIS_SVD/STM32H745_CM7.svd",
+            "v1": false,               //Change it depending on ST Link version
+            "serverpath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",
+            "stm32cubeprogrammer":"${config:STM32VSCodeExtension.cubeCLT.path}/STM32CubeProgrammer/bin",
+            "stlinkPath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",   
+            "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
+            "gdbPath":"gdb-multiarch",            
+            "serverArgs": [
+                "-l", "1",
+                "-m", "0",
+                "-t", "-s"
+            ],
+            "showDevDebugOutput": "both",
+            /* If you use external loader, add additional arguments */
+            //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],
+        },
+        {
+            "name": "Attach CM4",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "executable": "${workspaceFolder}/build/debug/CM4/CM4.elf",
+            // Let CMake extension decide executable: "${command:cmake.launchTargetPath}"
+            // Or fixed file path: "${workspaceFolder}/path/to/filename.elf"
+            "request": "attach",
+            "servertype": "stlink",
+            "device": "STM32H745ZITx", //MCU used
+            "interface": "swd",
+            "serialNumber": "",        //Set ST-Link ID if you use multiple at the same time
+            "svdFile": "${config:STM32VSCodeExtension.cubeCLT.path}/STMicroelectronics_CMSIS_SVD/STM32H745_CM4.svd",
+            "v1": false,               //Change it depending on ST Link version
+            "serverpath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",
+            "stm32cubeprogrammer":"${config:STM32VSCodeExtension.cubeCLT.path}/STM32CubeProgrammer/bin",
+            "stlinkPath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",   
+            "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
+            "gdbPath":"gdb-multiarch",            
+            "serverArgs": [
+                "-l", "1",
+                "-m", "3",
+                "-t", "-s"
+            ],
+            "showDevDebugOutput": "both",
+            "preLaunchTask": "Build project"
+            /* If you use external loader, add additional arguments */
+            //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],
+        },
+        {
+            /* In this launch config, the CM4 debug is started,
+            then we wait 10s for the M0 to boot. After than,
+            a launch config to attach to the CM0PLUS is started.
+            */
+            "name": "Build & Debug CM7+CM4",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "executable": "${workspaceFolder}/build/debug/CM7/CM7.elf",
+            "loadFiles": [
+                "${workspaceFolder}/build/debug/CM7/CM7.elf",
+                "${workspaceFolder}/build/debug/CM4/CM4.elf",
+            ],
+            "request": "launch",
+            "servertype": "stlink",
+            "device": "STM32H745ZITx",
+            "interface": "swd",
+            "serialNumber": "",
+            // "runToEntryPoint": "main",       // No run to main to let the CM7 reach the start point of the CM4
+            "svdFile": "${config:STM32VSCodeExtension.cubeCLT.path}/STMicroelectronics_CMSIS_SVD/STM32H745_CM7.svd",
+            "v1": false,
+            "serverpath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",
+            "stm32cubeprogrammer":"${config:STM32VSCodeExtension.cubeCLT.path}/STM32CubeProgrammer/bin",
+            "stlinkPath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",   
+            "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
+            "gdbPath":"gdb-multiarch",   
+            "showDevDebugOutput": "both",
+            "serverArgs": [
+                "-l", "1",
+                "-m", "0",
+                "-k",
+                "-t", "-s"
+            ],
+            "chainedConfigurations": {
+                "enabled": true,
+                "waitOnEvent": "postInit",
+                "detached": true,
+                "delayMs": 3000,    // Wait 5s, could be optimized
+                "lifecycleManagedByParent": true,   
+                "launches": [ 
+                    {
+                        "name": "Attach CM4",
+                        "folder": "${workspaceFolder}"
+                    }
+                ]
+            },
+            "preLaunchTask": "Build project",
+        },
+        {
+            "name": "Build & Debug CM4",
+            "cwd": "${workspaceFolder}",
+            "type": "cortex-debug",
+            "executable": "${workspaceFolder}/build/debug/CM4/CM4.elf",
+            // Let CMake extension decide executable: "${command:cmake.launchTargetPath}"
+            // Or fixed file path: "${workspaceFolder}/path/to/filename.elf"
+            "loadFiles": [
+                "${workspaceFolder}/build/debug/CM7/CM7.elf",
+                "${workspaceFolder}/build/debug/CM4/CM4.elf",
+            ],
+            "request": "launch",
+            "servertype": "stlink",
+            "device": "STM32H745ZITx", //MCU used
+            "interface": "swd",
+            "serialNumber": "",        //Set ST-Link ID if you use multiple at the same time
+            "runToEntryPoint": "main",
+            "svdFile": "${config:STM32VSCodeExtension.cubeCLT.path}/STMicroelectronics_CMSIS_SVD/STM32H745_CM4.svd",
+            "v1": false,               //Change it depending on ST Link version
+            "serverpath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",
+            "stm32cubeprogrammer":"${config:STM32VSCodeExtension.cubeCLT.path}/STM32CubeProgrammer/bin",
+            "stlinkPath": "${config:STM32VSCodeExtension.cubeCLT.path}/STLink-gdb-server/bin/ST-LINK_gdbserver",   
+            "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
+            "gdbPath":"gdb-multiarch",            
+            "serverArgs": [
+                "-l", "1",
+                "-m", "3",
+                "-k",
+                "-t","-s"
+            ],
+            "preLaunchTask": "Build project"
+            /* If you use external loader, add additional arguments */
+            //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],
+        },
+    ]
+}

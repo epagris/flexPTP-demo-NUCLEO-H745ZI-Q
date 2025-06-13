@@ -1,0 +1,18 @@
+[submodule "CM4/Modules/etherlib"]
+	path = CM4/Modules/etherlib
+	url = git@epagris.com:epagris/EtherLib.git
+[submodule "CM4/Modules/flexptp"]
+	path = CM4/Modules/flexptp
+	url = git@epagris.com:epagris/flexPTP.git
+[submodule "Common/Middlewares/FreeRTOS"]
+	path = Common/Middlewares/FreeRTOS
+	url = https://gitea.epagris.com/epagris/FreeRTOS-Kernel-CustomTag.git
+[submodule "Common/Drivers/STM32H7_HAL/stm32h7xx-hal-driver"]
+	path = Common/Drivers/STM32H7_HAL/stm32h7xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32h7xx-hal-driver.git
+[submodule "Common/Middlewares/embfmt"]
+	path = Common/Middlewares/embfmt
+	url = https://gitea.epagris.com/epagris/embfmt.git
+[submodule "CM4/Modules/lwip"]
+	path = CM4/Modules/lwip
+	url = https://github.com/lwip-tcpip/lwip.git

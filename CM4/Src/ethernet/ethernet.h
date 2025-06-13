@@ -1,0 +1,6 @@
+#ifndef ETHERNET_ETHERNET_ETHERLIB
+#define ETHERNET_ETHERNET_ETHERLIB
+
+void init_ethernet();
+
+#endif /* ETHERNET_ETHERNET_ETHERLIB */
