@@ -1,5 +1,4 @@
 #include "standard_output.h"
-#include "cmsis_os2.h"
 #include "serial_io.h"
 
 #include <stdarg.h>
@@ -28,6 +27,7 @@ static uint32_t insert_carriage_return(char *str, uint32_t maxLen) {
     return len;
 }
 
+static const char core_prefix[] = "[" ANSI_COLOR_BRED "M7" ANSI_COLOR_RESET "] ";
 static char last_char = '\n';
 
 void MSG(const char *format, ...) {
@@ -37,6 +37,9 @@ void MSG(const char *format, ...) {
     va_end(vaArgP);
     lineLen = insert_carriage_return(lineBuf, STDIO_OUTPUT_LINEBUF_LEN); // insert carriage returns
     if (lineLen > 0) {
+        if (last_char == '\n') {
+            serial_io_write(core_prefix, sizeof(core_prefix));
+        }
         serial_io_write(lineBuf, lineLen); // send line to the CDC
         last_char = lineBuf[lineLen - 1];
     }

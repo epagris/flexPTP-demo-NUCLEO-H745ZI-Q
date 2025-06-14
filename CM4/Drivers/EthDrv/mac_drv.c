@@ -36,6 +36,7 @@ static void ETHHW_InitClocks() {
      RMII_MII_TX_EN --------------------> PG11
      RMII_MII_TXD0 ---------------------> PG13
      RMII_MII_TXD1 ---------------------> PB13
+     PPS_OUT ---------------------------> PB5
      */
 
     /* Configure PA1, PA2 and PA7 */
@@ -47,7 +48,7 @@ static void ETHHW_InitClocks() {
     HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
 
     /* Configure PB13 */
-    GPIO_InitStructure.Pin = GPIO_PIN_13;
+    GPIO_InitStructure.Pin = GPIO_PIN_5 | GPIO_PIN_13;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
 
     /* Configure PC1, PC4 and PC5 */

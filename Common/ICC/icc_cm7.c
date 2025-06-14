@@ -39,7 +39,6 @@ void HSEM1_IRQHandler() {
 
 void HAL_HSEM_FreeCallback(uint32_t SemMask) {
     icc_recv_cb();
-    //usb_cdc_write("IRQ\r\n", 5);
     HAL_HSEM_ActivateNotification(__HAL_HSEM_SEMID_TO_MASK(ICC_SEVENBOUND_SEMID));
     return;
 }
