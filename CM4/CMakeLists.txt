@@ -196,6 +196,7 @@ set(FLEXPTP_CPU_PARAMS ${cpu_PARAMS})
 set(FLEXPTP_COMPILE_DEFS ${comp_defs})
 add_subdirectory(Modules/flexptp)
 target_link_libraries(${CM4_TARGET} flexptp)
+target_include_directories(${CM4_TARGET} PUBLIC ${FLEXPTP_INCLUDE_EXPORT})
 
 # Add sources to executable
 target_sources(${CM4_TARGET} PUBLIC ${sources_SRCS})

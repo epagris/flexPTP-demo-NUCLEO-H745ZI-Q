@@ -1,9 +1,9 @@
 [submodule "CM4/Modules/etherlib"]
 	path = CM4/Modules/etherlib
-	url = git@epagris.com:epagris/EtherLib.git
+	url = https://gitea.epagris.com/epagris/EtherLib
 [submodule "CM4/Modules/flexptp"]
 	path = CM4/Modules/flexptp
-	url = git@epagris.com:epagris/flexPTP.git
+	url = https://github.com/epagris/flexPTP
 [submodule "Common/Middlewares/FreeRTOS"]
 	path = Common/Middlewares/FreeRTOS
 	url = https://gitea.epagris.com/epagris/FreeRTOS-Kernel-CustomTag.git

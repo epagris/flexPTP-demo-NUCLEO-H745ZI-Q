@@ -23,7 +23,7 @@ Still not clear what is it useful for? No worries, it's a behind-the-scenes supp
 > To acquire the full source tree after cloning the repo, please fetch the linked *submodules* as well:
 
 ```
-git clone https://gitea.epagris.com/epagris/flexPTP-demo-NUCLEO-H745ZI-Q.git
+git clone https://github.com/epagris/flexPTP-demo-NUCLEO-H745ZI-Q
 cd flexPTP-demo-NUCLEO-H745ZI-Q
 git submodule init
 git submodule update
@@ -180,7 +180,7 @@ ptp log {def|corr|ts|info|locked|bmca} {on|off}    Turn on or off logging
 time [ns]                                          Print time
 ptp master [[un]prefer] [clockid]                  Master clock settings
 ptp info                                           Print PTP info
-ptp domain [domain]                                Print or get PTP domain
+ptp domain [domain]                                Print or set PTP domain
 ptp addend [addend]                                Print or set addend
 ptp transport [{ipv4|802.3}]                       Set or get PTP transport layer
 ptp delmech [{e2e|p2p}]                            Set or get PTP delay mechanism
